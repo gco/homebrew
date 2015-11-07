@@ -22,6 +22,13 @@ class Libxml2 < Formula
     depends_on "libtool" => :build
   end
 
+  # Fix Spurious warning when expanding external entities containing ID attributes
+  # https://bugzilla.gnome.org/show_bug.cgi?id=737840
+  patch do
+    url "http://patches.osdyson.org/patch/series/dl/libxml2/2.9.2+zdfsg1-4+dyson1/0015-Fix-the-spurious-ID-already-defined-error.patch"
+    sha256 "d5cfd901c56a94cffeed74c55797032d6c9d78a47dcc00150692ca36a53595af"
+  end
+
   depends_on :python => :optional
 
   keg_only :provided_by_osx
